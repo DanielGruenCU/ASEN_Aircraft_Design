@@ -57,14 +57,14 @@ W_pay_fixed = 0; %lb
 W_pay_drop = 0; %lb
 W0_guess=12000;
 config_row=1; %Geometric definition row number not including header (in design configuration spreadsheet file)
-MissionProfile_filename="Mission_Profile_Jet.xlsx";
+MissionProfile_filename="Mission_Profile_Template.xlsx";
 sheetnumber=2; %Mission profile sheet number (Mission_Profile_Template.xlsx)
 ProfileName="JetSubmersible";
 writeFlag=true;
 displayFlag=true;% flag for displaying additional iteration and segment data
 
 %Point Performance
-Requirements_filename="Requirements_Input_Jet.xlsx";
+Requirements_filename="Requirements_Input_Template.xlsx";
 sheetnumber_req=5;
 RequirementName="JetSubmersible";
 W_S_range = linspace(40,120,100);
