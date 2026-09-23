@@ -67,7 +67,7 @@ displayFlag=true;% flag for displaying additional iteration and segment data
 Requirements_filename="Requirements_Input_Jet.xlsx";
 sheetnumber_req=5;
 RequirementName="JetSubmersible";
-W_S_range = linspace(40,120,100);
+W_S_range = linspace(2,120,100);
 
 %%%%%%%%%%%%%%%%%%%END INPUTS%%%%%%%%%%%%%%%%%%
 
