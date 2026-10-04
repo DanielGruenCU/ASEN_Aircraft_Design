@@ -49,16 +49,14 @@ if ~exist(outputfolder, 'dir')
 end
 
 %Aero Analysis
-Configuration_filename="ASEN4138_Config_Jet_FW_Trade.xlsx";
-
-%for i=1:10
+Configuration_filename="ASEN4138_Config_Jet_Conv_Trade.xlsx";
 
 %Sizing Analysis
 W_crew = 450; %lb
 W_pay_fixed = 1000; %lb
 W_pay_drop = 0; %lb
 W0_guess=17000;
-config_row=10; %Geometric definition row number not including header (in design configuration spreadsheet file)
+config_row=; %Geometric definition row number not including header (in design configuration spreadsheet file)
 MissionProfile_filename="Mission_Profile_Jet.xlsx";
 sheetnumber=2; %Mission profile sheet number (Mission_Profile_Template.xlsx)
 ProfileName="JetSubmersible";
@@ -91,8 +89,6 @@ Req_Input=Read_Requirements_Input(Requirements_filename,sheetnumber_req,Requirem
 msgs = point_performance(Design_Input,config_row,W0,Propulsion_Input,DragPolar_Model,WaveDrag_Data,outputTable,Req_Input,W_S_range,msgs);
 
 writemsgs(msgs,outputfilename) %output warnings to output file
-
-%end
 
 % %% PHASE 2 AND 3 - HIGHER ORDER OPENVSP ANALYSIS
 % % OpenVSP Geometry & Aero Analysis Version 

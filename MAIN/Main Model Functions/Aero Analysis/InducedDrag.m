@@ -36,17 +36,17 @@ for n = 1:Count
     CL_minD(n) = WingLiftCurve{n,CD_min_index}; %Assumes CL for min D for wing only is same for whole aircraft
 
     %%Cavallo Oswalds Model (swept thin wing aircraft)
-    eo(n) = 4.61*(1-0.045*Design_Input.AR_w(n)^0.68)*cosd(Design_Input.Sweep_w(n))^0.15-3.1;
-    k1_sub(n) =  1/(pi*eo(n)*Design_Input.AR_w(n));
-    k2_sub(n) = -2*k1_sub(n)*CL_minD(n);
+    % eo(n) = 4.61*(1-0.045*Design_Input.AR_w(n)^0.68)*cosd(Design_Input.Sweep_w(n))^0.15-3.1;
+    % k1_sub(n) =  1/(pi*eo(n)*Design_Input.AR_w(n));
+    % k2_sub(n) = -2*k1_sub(n)*CL_minD(n);
 
     %Nita-Scholz Oswalds Model (Nita-Scholz Model)
-    % k_ef = 1-2*(Design_Input.Dia_f(n)/WingGeo_Data.b_w(n))^2;%fuselage impacts
-    % k_eDo = 0.873; %Statistical accounting for shifts in zero lift drag.Jet = 0.873,business jet=0.864,turboprop=0.804, gen aviation=0.804
-    % k_eM = 1; %compressibility correction for mach; if M<0.3,=1
-    % eo(n) = WingLiftModel.e(n)*k_ef*k_eDo*k_eM; %Oswalds Estimate
-    % k1_sub(n) =  1/(pi*eo(n)*Design_Input.AR_w(n));
-    % k2_sub(n) = -2*k1_sub(n)*CL_minD;
+    k_ef = 1-2*(Design_Input.Dia_f(n)/WingGeo_Data.b_w(n))^2;%fuselage impacts
+    k_eDo = 0.873; %Statistical accounting for shifts in zero lift drag.Jet = 0.873,business jet=0.864,turboprop=0.804, gen aviation=0.804
+    k_eM = 1; %compressibility correction for mach; if M<0.3,=1
+    eo(n) = WingLiftModel.e(n)*k_ef*k_eDo*k_eM; %Oswalds Estimate
+    k1_sub(n) =  1/(pi*eo(n)*Design_Input.AR_w(n));
+    k2_sub(n) = -2*k1_sub(n)*CL_minD(n);
 
 
 % /////////////////////////////////////////////////////////////////////////

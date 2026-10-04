@@ -58,7 +58,7 @@ function [W0,FinalWeightData,IterationData,FinalSegmentData,outputTable,msgs]=si
     %These are factors that may need to be editted for certain designs. 
     Converge = .005; %Sets the percent difference between W0_guess and W0_calc to determine solution has converged
     Kvs = 1; %From Raymer Table 6.1 based on variable sweep (1.04) or fixed sweep (1.0)
-    Composite_Factor=1; %Using the composite homebuilt model it was found that multiplying the empty weight fraction by 0.8-0.9 lined up more closely with serial produced composite aircraft. The Raymer text reccomends a similar approach.
+    Composite_Factor=.95; %Using the composite homebuilt model it was found that multiplying the empty weight fraction by 0.8-0.9 lined up more closely with serial produced composite aircraft. The Raymer text reccomends a similar approach.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     %%Initialization

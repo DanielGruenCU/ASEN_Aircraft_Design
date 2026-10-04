@@ -1,0 +1,135 @@
+clc;
+close all;
+clear;
+
+
+Sref = [450,500,550,600,650];
+ARs = [1.25, 1.5, 1.75, 2];
+Weights_AR125 = flip([16333.8343,15840.81053,15358.44508,14876.85127,14413.31474]);
+Weights_AR15 = flip([16647.07485,16087.62596,15533.48572,14959.08342,14374.2523]);
+Weights_AR175 = flip([17026.82507,16564.95273,15964.3207,15342.57425,14696.08594]);
+Weights_AR2 = flip([17543.98377,17007.33418,16475.66219,15785.56869,15098.27107]);
+
+Weights_sref650 = [16333.8343,16647.07485,17026.82507,17543.98377];
+Weights_sref600 = [15840.81053,16087.62596,16564.95273,17007.33418];
+Weights_sref550 = [15358.44508,15533.48572,15964.3207,16475.66219];
+Weights_sref500 = [14876.85127,14959.08342,15342.57425,15785.56869];
+Weights_sref450 = [14413.31474,14374.2523,14696.08594,15098.27107];
+
+WeightFuel_650 = flip([3829.606826,3589.769925,3478.978438,3468.83472]);
+WeightFuel_600 = flip([3735.91382,3471.794529,3396.860495,3361.287255]);
+WeightFuel_550 = flip([3656.216125,3363.029813,3273.739752,3262.645109]);
+WeightFuel_500 = flip([3588.344521,3254.937416,3150.730659,3119.204457]);
+WeightFuel_450 = flip([3543.950495,3153.279299,3027.916456,2984.991954]);
+
+
+Weights = flip([Weights_sref650;Weights_sref600;Weights_sref550;Weights_sref500;Weights_sref450]);
+WeightsFuel = flip([WeightFuel_650;WeightFuel_600;WeightFuel_550;WeightFuel_500;WeightFuel_450]);
+EmptyWeights = Weights-WeightsFuel;
+
+WingLoadingAR125 = [25.24434927,26.51962754,28.05508331,29.89461279,32.18704114];
+WingLoadingAR15 = [25.73022905,26.9315245,28.37666255,30.05515839,32.07925658];
+WingLoadingAR175 = [26.15384615,27.72411911,29.16347501,30.83666286,32.80971131];
+WingLoadingAR2 = [26.86106928,28.33333333,30.10507874,31.70341221,33.69537689];
+
+figure(); hold on; grid on;
+plot(Sref,Weights_AR125,'b-o',LineWidth=2);
+plot(Sref,Weights_AR15,'m-o',LineWidth=2);
+plot(Sref,Weights_AR175,'r-o',LineWidth=2);
+plot(Sref,Weights_AR2,'g-o',LineWidth=2);
+text(Sref(end)+5,Weights_AR125(end),'AR = 1.25');
+text(Sref(end)+5,Weights_AR15(end),'AR = 1.5');
+text(Sref(end)+5,Weights_AR175(end),'AR = 1.75');
+text(Sref(end)+5,Weights_AR2(end),'AR = 2');
+xlim([400,700]);
+title('Total Weight With Respect to Planform Area');
+ylabel('Weight (lb)');
+xlabel('Planform Area ft^2');
+
+figure(); hold on; grid on;
+plot(ARs,Weights_sref450,'--o',LineWidth=2);
+plot(ARs,Weights_sref500,'--o',LineWidth=2);
+plot(ARs,Weights_sref550,'--o',LineWidth=2);
+plot(ARs,Weights_sref600,'--o',LineWidth=2);
+plot(ARs,Weights_sref650,'--o',LineWidth=2);
+text(ARs(end)+0.02,Weights_sref450(end),'S = 450 ft^2');
+text(ARs(end)+0.02,Weights_sref500(end),'S = 500 ft^2');
+text(ARs(end)+0.02,Weights_sref550(end),'S = 550 ft^2');
+text(ARs(end)+0.02,Weights_sref600(end),'S = 600 ft^2');
+text(ARs(end)+0.02,Weights_sref650(end),'S = 650 ft^2');
+xlim([1,2.25]);
+title('Total Weight With Varied Aspect Ratio and Planform Area');
+ylabel('Weight (lb)');
+xlabel('Aspect Ratio');
+
+WingVolumes = zeros(5,4);
+
+t = 0.35;
+
+for i=1:5
+   S = 400 + 50*i;
+    for j=1:4
+        AR = 1 + 0.25*j;
+        
+        b = sqrt(AR*S);
+        Cr = 2*S/((1+t)*b);
+        Ct = t*Cr;
+
+        A1 = 0.0388*Cr^2;
+        A2 = 0.0388*Ct^2;
+
+        V = b*(A1+A2+sqrt(A1*A2))/3;
+
+        WingVolumes(i,j) = V;
+
+
+    end
+
+end
+
+FuelDensity = 50; % lb/ft^3
+
+WingFuelMass = WingVolumes.*FuelDensity;
+
+WingWaterMass = WingVolumes.*62.4;
+
+MassRatio = WingWaterMass./EmptyWeights;
+
+
+figure(); hold on; grid on;
+plot(Sref,MassRatio(:,1),'b-o',LineWidth=2); 
+plot(Sref,MassRatio(:,2),'m-o',LineWidth=2);
+plot(Sref,MassRatio(:,3),'r-o',LineWidth=2);
+plot(Sref,MassRatio(:,4),'g-o',LineWidth=2);
+text(Sref(end)+5,MassRatio(end,1),'AR = 1.25');
+text(Sref(end)+5,MassRatio(end,2),'AR = 1.5');
+text(Sref(end)+5,MassRatio(end,3),'AR = 1.75');
+text(Sref(end)+5,MassRatio(end,4),'AR = 2');
+xlim([400,700]);
+ylim([1,3.5]);
+title('Ratio of Weight Water in Wings to Empty Weight');
+ylabel('Weight Ratio');
+xlabel('Planform Area ft^2');
+
+figure(); hold on; grid on;
+plot(ARs,MassRatio(1,:),'--o',LineWidth=2);
+plot(ARs,MassRatio(2,:),'--o',LineWidth=2);
+plot(ARs,MassRatio(3,:),'--o',LineWidth=2);
+plot(ARs,MassRatio(4,:),'--o',LineWidth=2);
+plot(ARs,MassRatio(5,:),'--o',LineWidth=2);
+text(AR(end)+0.02,MassRatio(1,end),'S = 450 ft^2');
+text(AR(end)+0.02,MassRatio(2,end),'S = 500 ft^2');
+text(AR(end)+0.02,MassRatio(3,end),'S = 550 ft^2');
+text(AR(end)+0.02,MassRatio(4,end),'S = 600 ft^2');
+text(AR(end)+0.02,MassRatio(5,end),'S = 650 ft^2');
+xlim([1,2.25]);
+ylim([1,3.5]);
+title('Ratio of Weight Water in Wings to Empty Weight');
+ylabel('Weight Ratio');
+xlabel('Aspect Ratio');
+
+
+
+
+
+
