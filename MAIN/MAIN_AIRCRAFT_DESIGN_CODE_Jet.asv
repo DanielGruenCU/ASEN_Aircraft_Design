@@ -49,7 +49,9 @@ if ~exist(outputfolder, 'dir')
 end
 
 %Aero Analysis
-Configuration_filename="ASEN4138_Config_Jet_Conv_Trade.xlsx";
+Configuration_filename="ASEN4138_Config_Jet_FW_Trade.xlsx";
+
+%for i=1:10
 
 %Sizing Analysis
 W_crew = 450; %lb
@@ -89,6 +91,8 @@ Req_Input=Read_Requirements_Input(Requirements_filename,sheetnumber_req,Requirem
 msgs = point_performance(Design_Input,config_row,W0,Propulsion_Input,DragPolar_Model,WaveDrag_Data,outputTable,Req_Input,W_S_range,msgs);
 
 writemsgs(msgs,outputfilename) %output warnings to output file
+
+%end
 
 % %% PHASE 2 AND 3 - HIGHER ORDER OPENVSP ANALYSIS
 % % OpenVSP Geometry & Aero Analysis Version 

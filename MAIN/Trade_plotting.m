@@ -109,7 +109,7 @@ text(Sref(end)+5,WeightRatio(end,3),'AR = 1.75');
 text(Sref(end)+5,WeightRatio(end,4),'AR = 2');
 xlim([400,700]);
 ylim([1,3.5]);
-title('Ratio of Weight Water in Wings to Empty Weight');
+title('Ratio of Water Weight in Wings to Empty Weight');
 ylabel('Weight Ratio');
 xlabel('Planform Area ft^2');
 
@@ -126,7 +126,7 @@ text(AR(end)+0.02,WeightRatio(4,end),'S = 600 ft^2');
 text(AR(end)+0.02,WeightRatio(5,end),'S = 650 ft^2');
 xlim([1,2.25]);
 ylim([1,3.5]);
-title('Ratio of Weight Water in Wings to Empty Weight');
+title('Ratio of Water Weight in Wings to Empty Weight');
 ylabel('Weight Ratio');
 xlabel('Aspect Ratio');
 
