@@ -82,7 +82,7 @@ function msgs = point_performance(Design_Input,Config,W0_calc,Propulsion_Input,D
                     xline(X_Y_req(i,1),'--k')
 
                 otherwise
-                    plot(W_S_range,X_Y_req(i,:))
+                    plot(W_S_range,X_Y_req(i,:),LineWidth=2)
             end
 
 
@@ -95,7 +95,7 @@ function msgs = point_performance(Design_Input,Config,W0_calc,Propulsion_Input,D
             P_W_0=outputTable{1,6};
         end
 
-        plot(W_S_0,P_W_0,'Marker','diamond','MarkerSize',10);
+        plot(W_S_0,P_W_0,'Marker','diamond','MarkerSize',10,Linewidth=2);
         leg_lab=[Req_Input.labels,"Current DP"];
         legend(leg_lab)
         xlabel('Wing Loading (W/S) - lb/ft^2');
@@ -117,7 +117,7 @@ function msgs = point_performance(Design_Input,Config,W0_calc,Propulsion_Input,D
                     xline(X_Y_req(i,1),'--k')
 
                 otherwise
-                    plot(W_S_range,X_Y_req(i,:))
+                    plot(W_S_range,X_Y_req(i,:),LineWidth=2)
             end
 
 
@@ -125,7 +125,7 @@ function msgs = point_performance(Design_Input,Config,W0_calc,Propulsion_Input,D
         W_S_0=outputTable{1,5};
         T_W_0_mil=outputTable{1,6};
         T_W_0_AB=outputTable{1,7};
-        plot(W_S_0,T_W_0_mil,'Marker','diamond','MarkerSize',10);
+        plot(W_S_0,T_W_0_mil,'Marker','diamond','MarkerSize',10,LineWidth=2);
         plot(W_S_0,T_W_0_AB,'Marker','square','MarkerSize',15);
         leg_lab=[Req_Input.labels,"Current DP (mil)","Current DP (AB)"];
         legend(leg_lab)

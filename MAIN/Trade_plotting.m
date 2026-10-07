@@ -32,6 +32,11 @@ WingLoadingAR15 = [25.73022905,26.9315245,28.37666255,30.05515839,32.07925658];
 WingLoadingAR175 = [26.15384615,27.72411911,29.16347501,30.83666286,32.80971131];
 WingLoadingAR2 = [26.86106928,28.33333333,30.10507874,31.70341221,33.69537689];
 
+RootChords = [28.1091347570523,29.6296296296296,31.07581772356,32.4576330373432,33.782975558493;
+              25.6600119639834,27.0480275311193,28.3682106001878,29.6296296296296,30.8394962883872;
+              23.7565548366599,25.0416075475116,26.2638595682346,27.4317066599275,28.5518255306498;
+              22.2222222222222,23.4242789642102,24.5675910396696,25.6600119639834,26.7077872256592];
+
 figure(); hold on; grid on;
 plot(Sref,Weights_AR125,'b-o',LineWidth=2);
 plot(Sref,Weights_AR15,'m-o',LineWidth=2);
@@ -130,7 +135,21 @@ title('Ratio of Water Weight in Wings to Empty Weight');
 ylabel('Weight Ratio');
 xlabel('Aspect Ratio');
 
-
+figure(); hold on; grid on;
+plot(Sref,RootChords(1,:),'b-o',LineWidth=2); 
+plot(Sref,RootChords(2,:),'m-o',LineWidth=2);
+plot(Sref,RootChords(3,:),'r-o',LineWidth=2);
+plot(Sref,RootChords(4,:),'g-o',LineWidth=2);
+text(Sref(end)+5,RootChords(1,end),'AR = 1.25');
+text(Sref(end)+5,RootChords(2,end),'AR = 1.5');
+text(Sref(end)+5,RootChords(3,end),'AR = 1.75');
+text(Sref(end)+5,RootChords(4,end),'AR = 2');
+xlim([400,700]);
+title(['Root Chord / Overall Length With Respect to Planform Area']);
+ylabel('Length (ft)');
+xlabel('Planform Area ft^2');
+yline(25, LineWidth=2);
+text(403,25.2,'Minimum length 25ft');
 
 
 

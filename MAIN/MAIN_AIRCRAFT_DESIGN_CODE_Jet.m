@@ -55,10 +55,10 @@ Configuration_filename="ASEN4138_Config_Jet_FW_Trade.xlsx";
 
 %Sizing Analysis
 W_crew = 450; %lb
-W_pay_fixed = 1000; %lb
+W_pay_fixed = 2500; %lb
 W_pay_drop = 0; %lb
 W0_guess=17000;
-config_row=5; %Geometric definition row number not including header (in design configuration spreadsheet file)
+config_row=6; %Geometric definition row number not including header (in design configuration spreadsheet file)
 MissionProfile_filename="Mission_Profile_Jet.xlsx";
 sheetnumber=2; %Mission profile sheet number (Mission_Profile_Template.xlsx)
 ProfileName="JetSubmersible";
