@@ -1,0 +1,36 @@
+...Comp Geom...
+9 Num Comps
+13 Total Num Meshes
+9280 Total Num Tris
+
+Theo_Area   Wet_Area   Theo_Vol    Wet_Vol  Name
+  109.367     31.792     77.904     23.273  CrewCapsule    
+  346.390    324.977     91.280     88.009  MainWing1.0.0  
+  346.390    324.977     91.280     88.009  MainWing1.0.0  
+   23.656     22.497      7.585      7.413  Engines        
+   23.656     22.497      7.585      7.413  Engines        
+   48.659      6.303     12.942      1.723  WingConnector  
+   11.323     10.484      2.151      2.047  Floats         
+   11.323     10.484      2.151      2.047  Floats         
+   76.377     69.574     14.153     13.250  HorizontalStabilizer1.0.0
+   76.377     69.574     14.153     13.250  HorizontalStabilizer1.0.0
+   54.464     47.359     10.007      8.943  VerticalStabilizer1.0.0
+  240.519    188.518    177.207    142.741  MainFuselage   
+   91.201     46.872     71.068     37.537  AftFuselage    
+-------------------------------------------------
+ 1459.700   1175.908    579.467    435.653  Totals         
+
+Tag_Theo_Area   Tag_Wet_Area    Tag_Name
+      109.367         31.792    CrewCapsule_S_Surf0
+      346.390        324.977    MainWing1.0.0_S_Surf0
+      346.390        324.977    MainWing1.0.0_S_Surf1
+       23.656         22.497    Engines_S_Surf0
+       23.656         22.497    Engines_S_Surf1
+       48.659          6.303    WingConnector_S_Surf0
+       11.323         10.484    Floats_S_Surf0 
+       11.323         10.484    Floats_S_Surf1 
+       76.377         69.574    HorizontalStabilizer1.0.0_S_Surf0
+       76.377         69.574    HorizontalStabilizer1.0.0_S_Surf1
+       54.464         47.359    VerticalStabilizer1.0.0_S_Surf0
+      240.519        188.518    MainFuselage_S_Surf0
+       91.201         46.872    AftFuselage_S_Surf0
