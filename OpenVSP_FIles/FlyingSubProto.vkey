@@ -1,0 +1,19 @@
+# VSPGEOM v3 Tag Key File
+C:\Users\HP\Documents\GitHub\ASEN_Aircraft_Design\OpenVSP_FIles\FlyingSubProto.vspgeom
+5
+
+# part#,geom#,surf#,gname,gid,thick,plate,copy#,geomcopy#
+1,4,0,MainWing1.0.0_C,FHGBTOXHJG,0,3,1,5
+3,1,0,WingConnector_S,LVLDDWZSLZ,1,0,1,2
+4,2,0,Floats_S,KBLRDQJKSK,1,0,1,3
+6,3,0,HorizontalStabilizer1.0.0_C,GTAORTDGRJ,0,3,1,4
+9,0,0,MainFuselage_S,VWRGEVFXLL,1,0,1,1
+
+5
+
+# tag#,part#,ssname1,ssname2,...,ssid1,ssid2,...
+1,1
+2,3
+3,4
+4,6
+5,9
